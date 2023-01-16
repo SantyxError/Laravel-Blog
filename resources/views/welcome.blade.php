@@ -13,4 +13,4 @@
 <h1>HOME</h1>
 
 {{-- cerramos seccion --}}
-@endsection
+@endsection 
