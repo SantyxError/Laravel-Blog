@@ -26,3 +26,5 @@
     </div>
   </nav>
 
+  <p style="text-align: right">{{fechaActual("18/01/2023")}}</p>
+
