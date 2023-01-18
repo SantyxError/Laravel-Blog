@@ -10,7 +10,9 @@
 @section('partials.nav')
 
 @section('contenido')
-<h1>HOME</h1>
+<h1>Página de Inicio</h1>
+
+<p>Bienvenido al blog</p>
 
 {{-- cerramos seccion --}}
 @endsection 
