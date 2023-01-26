@@ -19,6 +19,7 @@ Route::view('/posts_ficha/{id}', 'listadoId', ['id' => 'id'])->name('listadoId')
 
 
 // Mediante "resource", podemos agrupar diferentes url con sus metodos.
+// Estos metodos serán los que pasen la vista.
 // En este caso loa grupamos en "posts", y a continuacion añadimos el controlador seguido de ::class
 // Por ultimo, indicamos que solo lea los metodos asignados
 Route::resource('posts', PostController::class)->only(['index', 'show', 'create', 'edit']);
