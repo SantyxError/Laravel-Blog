@@ -22,4 +22,14 @@ Route::view('/posts_ficha/{id}', 'listadoId', ['id' => 'id'])->name('listadoId')
 // Estos metodos serán los que pasen la vista.
 // En este caso loa grupamos en "posts", y a continuacion añadimos el controlador seguido de ::class
 // Por ultimo, indicamos que solo lea los metodos asignados
-Route::resource('posts', PostController::class)->only(['index', 'show', 'create', 'edit']);
+
+
+Route::get('/posts/nuevaPrueba',  [PostController::class, 'nuevaPrueba']);
+Route::get('/posts/editarPrueba/{id}', [PostController::class, 'editarPrueba']);
+
+Route::resource('posts', PostController::class);
+
+//Route::get('/posts/nuevaPrueba', 'PostController@nuevaPrueba')->name('nuevaPrueba');
+//Route::get('posts/editarPrueba/{id}', 'PostController@editarPrueba')->name('editarPrueba');
+
+// Route::get('posts', 'PostController');

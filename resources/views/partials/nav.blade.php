@@ -19,7 +19,7 @@
           <a href="{{route ('home')}}" class="nav-link" >Inicio</a>
         </li>
         <li class="nav-item">
-          <a href="{{route('posts.index')}}" class="nav-link">Listado de libros</a>
+          <a href="{{route('posts.index')}}" class="nav-link">Listado de Post</a>
         </li>
       </ul>
     </div>

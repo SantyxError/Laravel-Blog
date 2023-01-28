@@ -14,16 +14,17 @@ return new class extends Migration
     public function up()
     {
 
-        Schema::create('blog', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string('Título del post');
-            $table->text("Contenido del post");
+            $table->string('titulo');
+            $table->text("contenido");
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
+     * 
      *
      * @return void
      */
