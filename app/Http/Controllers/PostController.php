@@ -59,19 +59,27 @@ class PostController extends Controller
     public function nuevaPrueba()
     {
         $num = rand();
+        $min = 1;
+        $max = 2;
+        $numAutor = rand($min, $max);
         $post = new Post();
         $post->titulo = "Titulo " . $num;
         $post->contenido = "Contenido" . $num;
+        $post->autor_id = $numAutor;
         $post->save();
         return redirect()->route('posts.index');
     }
 
     public function editarPrueba($id)
     {
+        $min = 1;
+        $max = 2;
+        $numAutor = rand($min, $max);
         $num = rand();
         $postAModificar = Post::findOrFail($id);
         $postAModificar->titulo = "Otro título " . $num;
         $postAModificar->contenido = "Otro contenido " . $num;
+        $postAModificar->autor_id = $numAutor;
         $postAModificar->save();
         return redirect()->route('posts.index');
     }
