@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Comentario;
 use Illuminate\Http\Request;
+
 
 class PostController extends Controller
 {
@@ -23,10 +26,16 @@ class PostController extends Controller
         return redirect()->route('home');
     }
 
-
+    //el método store se encargará de recoger los datos de la petición a través del parámetro Request de dicho método
     public function store(Request $request)
     {
-        //
+        $post = new Post();
+        $post->titulo = $request->get('titulo');
+        $post->contenido = $request->get('contenido');
+        $post->usuario()->associate(User::get()->first());
+        $post->save();
+
+        return redirect()->route('posts.index');
     }
 
 
@@ -52,6 +61,12 @@ class PostController extends Controller
 
     public function destroy($id)
     {
+
+        // En el caso de que hayas
+        // hecho el ejercicio opcional de la sesión anterior para añadir comentarios a los posts, deberás
+        // previamente eliminar todos los comentarios asociados a ese post, y después borrar el post. Para filtrar
+        // los comentarios de un post y borrarlos, utiliza la cláusula where que se explicó en la sesión 4:
+        Comentario::where('post_id', $id)->delete();
         Post::findOrFail($id)->delete();
         return redirect()->route('posts.index');
     }

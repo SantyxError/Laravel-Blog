@@ -14,6 +14,9 @@
 <body>
 
     @include('partials.nav')
+    <div style="text-align: right">
+        {{ fechaActual("d/m/Y") }}
+    </div>
     @yield('contenido')
 
 

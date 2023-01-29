@@ -21,10 +21,13 @@
         <li class="nav-item">
           <a href="{{route('posts.index')}}" class="nav-link">Listado de Post</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('posts.create') }}">Nuevo post</a>
+        </li>
       </ul>
     </div>
     </div>
   </nav>
 
-  <p style="text-align: right">{{fechaActual("18/01/2023")}}</p>
+ 
 

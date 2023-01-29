@@ -35,7 +35,10 @@
         <li>No existen posts</li>
     @endforelse
     
+    
  </ul>
+
+ {{ $posts->links() }}
  @endsection
 
 
