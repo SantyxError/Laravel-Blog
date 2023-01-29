@@ -19,6 +19,7 @@
                 @method('DELETE')
                 @csrf
                 <button>Borrar</button>
+                <a href="{{ route('posts.edit', $post) }}">Editar</a>
             </form>
 {{-- 
             <form action="{{route('posts.edit',$post)}}"  method="POST">

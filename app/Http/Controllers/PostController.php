@@ -49,13 +49,19 @@ class PostController extends Controller
 
     public function edit($id)
     {
-        return redirect()->route('home');
+        $post = Post::findOrFail($id);
+        return view('posts.edit', compact('post'));
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->titulo = $request->get('titulo');
+        $post->contenido = $request->get('contenido');
+        $post->save();
+
+        return redirect()->route('posts.show', $id);
     }
 
 
