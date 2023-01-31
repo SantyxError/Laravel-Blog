@@ -15,6 +15,7 @@
             ({{$post->autor->login}})  
             
             <a href="{{route('posts.show',$post)}}">Ver</a>
+            @if(auth()->check() && (auth()->user()->id == $post->usuario->id || auth()->user()->rol == 'admin'))
             <form action="{{route('posts.destroy',$post)}}"  method="POST">
                 @method('DELETE')
                 @csrf

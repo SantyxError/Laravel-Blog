@@ -35,13 +35,23 @@ return [
     |
     */
 
+
+    //     Los guards son mecanismos que definen cómo se van a autenticar los usuarios para cada petición. El
+    // mecanismo más habitual es mediante sesiones, donde se guarda la información del usuario
+    // autenticado en la sesión, aunque por defecto también se habilita la autenticación mediante tokens.
+
     'guards' => [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
-    ],
 
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+            'hash' => false,
+        ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -59,6 +69,11 @@ return [
     |
     */
 
+    //     Los providers indican cómo se van a obtener los usuarios de la base de datos para comprobar la
+    // autenticación. Las opciones habilitadas por defecto son mediante Eloquent (y el modelo de usuarios
+    // que tengamos definido), o mediante query builder, consultando directamente la tabla correspondiente
+    // de usuarios.
+
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
@@ -67,7 +82,7 @@ return [
 
         // 'users' => [
         //     'driver' => 'database',
-        //     'table' => 'users',
+        //     'table' => 'usuarios',
         // ],
     ],
 

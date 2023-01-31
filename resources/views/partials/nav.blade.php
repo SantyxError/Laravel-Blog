@@ -21,9 +21,16 @@
         <li class="nav-item">
           <a href="{{route('posts.index')}}" class="nav-link">Listado de Post</a>
         </li>
+        @if(auth()->guest())
+        <li class="nav-item">
+            {{-- <a class="nav-link" href="{{ route('auth.login') }}">Login</a> --}}
+        </li>
+      @endif
+      @if(auth()->check())
         <li class="nav-item">
           <a class="nav-link" href="{{ route('posts.create') }}">Nuevo post</a>
         </li>
+        @endif
       </ul>
     </div>
     </div>

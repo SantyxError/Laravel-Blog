@@ -6,10 +6,19 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Comentario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(
+            'auth',
+            ['except' => ['index', 'show']]
+        );
+    }
+
 
     public function index()
     {
@@ -50,18 +59,25 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.edit', compact('post'));
+        if (Auth::user()->id != $post->usuario->id && Auth::user()->rol != 'admin')
+            return redirect()->route('posts.index');
+        else
+            return view('posts.edit', compact('post'));
     }
 
 
     public function update(Request $request, $id)
     {
         $post = Post::findOrFail($id);
-        $post->titulo = $request->get('titulo');
-        $post->contenido = $request->get('contenido');
-        $post->save();
+        if (Auth::user()->id != $post->usuario->id && Auth::user()->rol != 'admin')
+            return redirect()->route('posts.index');
+        else {
+            $post->titulo = $request->get('titulo');
+            $post->contenido = $request->get('contenido');
+            $post->save();
 
-        return redirect()->route('posts.show', $id);
+            return redirect()->route('posts.show', $id);
+        }
     }
 
 
