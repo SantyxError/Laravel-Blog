@@ -31,14 +31,9 @@ return [
     | users are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
-    | Supported: "session"
+    | Supported: "session", "token"
     |
     */
-
-
-    //     Los guards son mecanismos que definen cómo se van a autenticar los usuarios para cada petición. El
-    // mecanismo más habitual es mediante sesiones, donde se guarda la información del usuario
-    // autenticado en la sesión, aunque por defecto también se habilita la autenticación mediante tokens.
 
     'guards' => [
         'web' => [
@@ -52,6 +47,7 @@ return [
             'hash' => false,
         ],
     ],
+
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -68,11 +64,6 @@ return [
     | Supported: "database", "eloquent"
     |
     */
-
-    //     Los providers indican cómo se van a obtener los usuarios de la base de datos para comprobar la
-    // autenticación. Las opciones habilitadas por defecto son mediante Eloquent (y el modelo de usuarios
-    // que tengamos definido), o mediante query builder, consultando directamente la tabla correspondiente
-    // de usuarios.
 
     'providers' => [
         'users' => [
@@ -95,7 +86,7 @@ return [
     | than one user table or model in the application and you want to have
     | separate password reset settings based on the specific user types.
     |
-    | The expire time is the number of minutes that each reset token will be
+    | The expire time is the number of minutes that the reset token should be
     | considered valid. This security feature keeps tokens short-lived so
     | they have less time to be guessed. You may change this as needed.
     |
